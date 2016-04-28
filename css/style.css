@@ -1,0 +1,21 @@
+#title {
+  margin: 30px;
+}
+body {
+  text-align: center;
+  margin-top: 100px;
+  background-color: #152C55;
+  color: #fff;
+}
+
+.time-modifier, .session {
+  line-height: 0.7;
+}
+
+p {
+  display: inline;
+}
+
+button {
+  color: black;
+}

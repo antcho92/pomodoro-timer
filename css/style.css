@@ -1,21 +1,19 @@
 #title {
-  margin: 30px;
+    margin: 30px;
 }
 body {
-  text-align: center;
-  margin-top: 100px;
-  background-color: #152C55;
-  color: #fff;
+    text-align: center;
+    margin-top: 100px;
+    background-color: #3E3E3F;
+    color: #EBE1F9;
+    font-family: "Roboto", Helvetica;
 }
-
 .time-modifier, .session {
-  line-height: 0.7;
+    line-height: 0.7;
 }
-
 p {
-  display: inline;
+    display: inline;
 }
-
-button {
-  color: black;
+#start-stop {
+    padding: 25px;
 }

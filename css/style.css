@@ -17,3 +17,12 @@ p {
 #start-stop {
     padding: 25px;
 }
+#timer {
+    font-size: 5em;
+}
+#sessionLength {
+    font-size: 2.5em;
+}
+#breakLength {
+    font-size:2.5em;
+}

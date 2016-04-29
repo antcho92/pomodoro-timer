@@ -15,14 +15,14 @@ $(document).ready(function() {
 
     //increases the session length by 1 minutes
     $("#increaseSession").click(function() {
-        var next = parseInt($("#sessionLength").text());
+        var next = parseInt($("#sessionLength").text(), 10);
         $("#sessionLength").text(next);
         $("#timer").text($('#sessionLength').text());
     });
     //decreases the session length by 1 minute
     $("#decreaseSession").click(function() {
-        var next = $("#sessionLength").text();
-        $("#sessionLength").text(parseInt(next, 10) - 1);
+        var next = parseInt($("#sessionLength").text(), 10);
+        $("#sessionLength").text(next);
         $("#timer").text($('#sessionLength').text());
     });
     //increases the break length by 1 minute

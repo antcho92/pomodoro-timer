@@ -15,26 +15,30 @@ $(document).ready(function() {
 
     //increases the session length by 1 minutes
     $("#increaseSession").click(function() {
+        $('#mode').text("Session");
         var next = parseInt($("#sessionLength").text(), 10);
-        $("#sessionLength").text(next);
+        $("#sessionLength").text(next + 1);
         $("#timer").text($('#sessionLength').text());
     });
     //decreases the session length by 1 minute
     $("#decreaseSession").click(function() {
+        $('#mode').text("Session");
         var next = parseInt($("#sessionLength").text(), 10);
-        $("#sessionLength").text(next);
+        $("#sessionLength").text(next - 1);
         $("#timer").text($('#sessionLength').text());
     });
     //increases the break length by 1 minute
-    $("#increaseSession").click(function() {
-        var next = $("#sessionLength").text();
-        $("#sessionLength").text(parseInt(next, 10) + 1);
-        $("#timer").text($('#sessionLength').text());
+    $("#increaseBreak").click(function() {
+        $('#mode').text("Break");
+        var next = $("#breakLength").text();
+        $("#breakLength").text(parseInt(next, 10) + 1);
+        $("#timer").text($('#breakLength').text());
     });
     //decreases break length by 1 minute
-    $("#decreaseSession").click(function() {
-        var next = $("#sessionLength").text();
-        $("#sessionLength").text(parseInt(next, 10) - 1);
-        $("#timer").text($('#sessionLength').text());
+    $("#decreaseBreak").click(function() {
+        $('#mode').text("Break");
+        var next = $("#breakLength").text();
+        $("#breakLength").text(parseInt(next, 10) - 1);
+        $("#timer").text($('#breakLength').text());
     });
 });

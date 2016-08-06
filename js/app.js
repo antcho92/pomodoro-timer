@@ -1,20 +1,19 @@
 function startTimer() {
-	var timer = $('#timer').text(),
-		reference = new Date().getTime();
-	updateTimer();
+	var timeRemaining = $('#timer').text().split(':'),
+		endTime = new Date().getTime() + parseInt(timeRemaining[0], 10) * 60000;
+	updateTimer(timer);
+	console.log(endTime);
 }
 
-function updateTimer() {
-	$('#timer').text();
+function updateTimer(timer) {
+	$('#timer').text(format(timer));
 }
 
-function format() {
+function format(timer) {
 
 }
 
 $(document).ready(function () {
-	//sets the starting timer at 25
-	$("#timer").text($('#sessionLength').text());
 
 	//increases the session length by 1 minutes
 	$("#increaseSession").on('click', function () {

@@ -66,12 +66,19 @@ function endTimer() {
     pauseTimer();
     running = false;
     $('#seconds').text(pad(00));
-    if ($('#mode').text() == "Session") {
-        $('#mode').text('Break');
-        $('#minutes').text(pad($('#breakLength').text()));
-    } else {
-        $('#mode').text('Session');
-        $('#minutes').text(pad($('#sessionLength').text()));
+    switchMode();
+}
+
+function switchMode() {
+    if (!running) {
+        $('#seconds').text(pad(00));
+        if ($('#mode').text() == "Session") {
+            $('#mode').text('Break');
+            $('#minutes').text(pad($('#breakLength').text()));
+        } else {
+            $('#mode').text('Session');
+            $('#minutes').text(pad($('#sessionLength').text()));
+        }
     }
 }
 
@@ -118,5 +125,6 @@ $(document).ready(function() {
     $('#start').on('click', startTimer);
     $('#pause').on('click', pauseTimer);
     $('#reset').on('click', resetTimer);
+    $('#mode').on('click', switchMode);
 
 });

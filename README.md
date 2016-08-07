@@ -12,3 +12,7 @@ Working on adding timer functionality. Using this site to create a timer that qu
 8/5/16
 References:
 https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
+
+8/7/16
+Fixed functionality by declaring endTime and timeInterval in the global state.
+Still need to add what happens when timer reaches 0

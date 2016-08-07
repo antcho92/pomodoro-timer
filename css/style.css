@@ -20,9 +20,6 @@ p {
 #timer {
     font-size: 5em;
 }
-#sessionLength {
+#sessionLength, #breakLength {
     font-size: 2.5em;
-}
-#breakLength {
-    font-size:2.5em;
 }

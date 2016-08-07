@@ -15,4 +15,6 @@ https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
 
 8/7/16
 Fixed functionality by declaring endTime and timeInterval in the global state.
-Still need to add what happens when timer reaches 0
+Added audio sound at end of timer
+Need to fix bugs when adding time to the timer
+Need to fix styling of the web app to look better

@@ -1,10 +1,15 @@
 //will hold the time that the timer should end
-var endTime;
+var endTime,
 //will hold the function for setInterval and allow for stoppage in the stop function
-var timeInterval;
+    timeInterval,
+    audio = new Audio('http://soundbible.com/grab.php?id=784&type=mp3');
+function beep() {
+    audio.play();
+}
 
 //starts the timer and finds the end time using a new Date object and adding the remining time
 function startTimer() {
+    console.log('starting timer');
     //Sets the time remaining in the clock based on the minutes/seconds that are currently in the timer
     var timeRemaining = $('#minutes').text() * 60 * 1000 + $('#seconds').text() * 1000;
     //sets the endTime by adding the time remaining to the current time
@@ -26,7 +31,8 @@ function updateTimer() {
     $('#seconds').text(pad(secs));
     $('#minutes').text(pad(mins));
     if (timeRemaining <= 0) {
-        clearInterval(timeInterval);
+        endTimer();
+
     }
 }
 
@@ -36,16 +42,30 @@ function pad(val) {
 }
 
 function pauseTimer() {
+    console.log("pausing");
     clearInterval(timeInterval);
 }
 
 function resetTimer() {
     pauseTimer();
+    console.log('resetting timer');
     $('#seconds').text(pad(00));
     if ($('#mode').text() == "Session") {
         $('#minutes').text(pad($('#sessionLength').text()));
     } else {
         $('#minutes').text(pad($('#breakLength').text()));
+    }
+}
+function endTimer() {
+    beep();
+    pauseTimer();
+    $('#seconds').text(pad(00));
+    if ($('#mode').text() == "Session") {
+        $('#mode').text('Break');
+        $('#minutes').text(pad($('#breakLength').text()));
+    } else {
+        $('#mode').text('Session');
+        $('#minutes').text(pad($('#sessionLength').text()));
     }
 }
 

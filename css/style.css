@@ -11,9 +11,6 @@ body {
 .time-modifier, .session {
     line-height: 0.7;
 }
-p {
-    display: inline;
-}
 #start-stop {
     padding: 25px;
 }

@@ -1,8 +1,10 @@
 //will hold the time that the timer should end
 var endTime,
-//will hold the function for setInterval and allow for stoppage in the stop function
+    //will hold the function for setInterval and allow for stoppage in the stop function
     timeInterval,
-    audio = new Audio('http://soundbible.com/grab.php?id=784&type=mp3');
+    audio = new Audio('http://soundbible.com/grab.php?id=784&type=mp3'),
+    running = false;
+
 function beep() {
     audio.play();
 }
@@ -17,6 +19,7 @@ function startTimer() {
     //updates the timer immediately
     updateTimer();
     timeInterval = window.setInterval(updateTimer, 200);
+    running = true;
 }
 
 //function to update the look of the timer in browser
@@ -32,7 +35,6 @@ function updateTimer() {
     $('#minutes').text(pad(mins));
     if (timeRemaining <= 0) {
         endTimer();
-
     }
 }
 
@@ -44,10 +46,12 @@ function pad(val) {
 function pauseTimer() {
     console.log("pausing");
     clearInterval(timeInterval);
+    running = false;
 }
 
 function resetTimer() {
     pauseTimer();
+    running = false;
     console.log('resetting timer');
     $('#seconds').text(pad(00));
     if ($('#mode').text() == "Session") {
@@ -56,9 +60,11 @@ function resetTimer() {
         $('#minutes').text(pad($('#breakLength').text()));
     }
 }
+
 function endTimer() {
     beep();
     pauseTimer();
+    running = false;
     $('#seconds').text(pad(00));
     if ($('#mode').text() == "Session") {
         $('#mode').text('Break');
@@ -73,31 +79,40 @@ $(document).ready(function() {
 
     //increases the session length by 1 minutes
     $("#increaseSession").on('click', function() {
-        $('#mode').text("Session");
-        var next = parseInt($("#sessionLength").text(), 10);
-        $("#sessionLength").text(next + 1);
-        $("#minutes").text(pad($('#sessionLength').text()));
+        if (!running) {
+            $('#mode').text("Session");
+            var next = parseInt($("#sessionLength").text(), 10);
+            $("#sessionLength").text(next + 1);
+            $("#minutes").text(pad($('#sessionLength').text()));
+        }
+
     });
     //decreases the session length by 1 minute
     $("#decreaseSession").on('click', function() {
-        $('#mode').text("Session");
-        var next = parseInt($("#sessionLength").text(), 10);
-        $("#sessionLength").text(next - 1);
-        $("#minutes").text(pad($('#sessionLength').text()));
+        if (!running) {
+            $('#mode').text("Session");
+            var next = parseInt($("#sessionLength").text(), 10);
+            $("#sessionLength").text(next - 1);
+            $("#minutes").text(pad($('#sessionLength').text()));
+        }
     });
     //increases the break length by 1 minute
     $("#increaseBreak").on('click', function() {
-        $('#mode').text("Break");
-        var next = $("#breakLength").text();
-        $("#breakLength").text(parseInt(next, 10) + 1);
-        $("#minutes").text(pad($('#breakLength').text()));
+        if (!running) {
+            $('#mode').text("Break");
+            var next = $("#breakLength").text();
+            $("#breakLength").text(parseInt(next, 10) + 1);
+            $("#minutes").text(pad($('#breakLength').text()));
+        }
     });
     //decreases break length by 1 minute
     $("#decreaseBreak").on('click', function() {
-        $('#mode').text("Break");
-        var next = $("#breakLength").text();
-        $("#breakLength").text(parseInt(next, 10) - 1);
-        $("#minutes").text(pad($('#breakLength').text()));
+        if (!running) {
+            $('#mode').text("Break");
+            var next = $("#breakLength").text();
+            $("#breakLength").text(parseInt(next, 10) - 1);
+            $("#minutes").text(pad($('#breakLength').text()));
+        }
     });
 
     $('#start').on('click', startTimer);
